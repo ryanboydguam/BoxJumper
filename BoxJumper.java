@@ -15,6 +15,8 @@ import java.util.Random;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
+import javax.swing.*; //
+import java.awt.*;//
 
 public class BoxJumper implements ActionListener, MouseListener,KeyListener {
 	public String username = "";
@@ -31,6 +33,9 @@ public class BoxJumper implements ActionListener, MouseListener,KeyListener {
 	public boolean gameStart;
 	public int score;
 	public boolean login;
+	//import image
+	ImageIcon im = new ImageIcon("brick.png");  
+	Image i = im.getImage();  
 	//GRAPHIC SIZE CONTROLER
 	//
 	public int[] gameObjectSize = new int[] {500-120,120,20,500/2-10,0};
@@ -142,6 +147,8 @@ public class BoxJumper implements ActionListener, MouseListener,KeyListener {
 	public void paintColumn(Graphics g,Rectangle column ) {
 		g.setColor(Color.orange.darker().darker().darker());
 		g.fillRect(column.x, column.y, column.width, column.height);
+		// draw img
+		g.drawImage(i,column.x,column.y,column.width,column.height,this);
 	}
 	
 	
