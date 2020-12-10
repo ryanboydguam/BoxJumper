@@ -73,13 +73,16 @@ public class BoxJumper implements ActionListener, MouseListener,KeyListener {
 	}
 	
 	public void addColumn(boolean start) {
-		int width = 100;
-		int height = 20 + randomNumGen.nextInt(100);
+		double boxSpacerDouble =Math.random();
+		boxSpacerDouble *= 500;
+		int boxSpacer = (int) boxSpacerDouble;
+		
+		System.out.println(boxSpacer);
 		if(start) {
-			boxes.add(new Rectangle(500 + width +boxes.size()*300			, 500-height-120, width, height));
+			boxes.add(new Rectangle(500 + 100 +boxes.size()*300+boxSpacer			, 280, 100, 100));
 		}else {
 			
-			boxes.add(new Rectangle(boxes.get(boxes.size() - 1).x+600		, 500-height-120, width, height));
+			boxes.add(new Rectangle(boxes.get(boxes.size() - 1).x+600+boxSpacer		, 280, 100, 100));
 		}
 	}
 	public void jump() {
@@ -93,7 +96,7 @@ public class BoxJumper implements ActionListener, MouseListener,KeyListener {
 		}
 		if(!gameStart) {
 			gameStart = true;
-		}else if(!gameOver) {
+		}else if(!gameOver&&player.y>350) {
 			if(yAxisModifer >0) {
 				yAxisModifer =0;
 			}
@@ -106,7 +109,6 @@ public class BoxJumper implements ActionListener, MouseListener,KeyListener {
 		gameFPS++;
 		int speed =10;
 		if(gameStart && !gameOver) {
-			//Controlls rendering the boxes
 			for(int i = 0; i<boxes.size();i++) {
 				Rectangle column = boxes.get(i);
 				column.x -= speed;
@@ -128,10 +130,7 @@ public class BoxJumper implements ActionListener, MouseListener,KeyListener {
 					player.x = column.x - player.width;
 				}
 			}
-			if(player.y > gameObjectSize[0] || player.y < gameObjectSize[4]) {
-				
-				gameOver = true;
-			}
+			
 			if(gameOver) {
 				player.y = gameObjectSize[0]-player.height;
 			}
@@ -141,7 +140,7 @@ public class BoxJumper implements ActionListener, MouseListener,KeyListener {
 	
 	
 	public void paintColumn(Graphics g,Rectangle column ) {
-		g.setColor(Color.green.darker());
+		g.setColor(Color.orange.darker().darker().darker());
 		g.fillRect(column.x, column.y, column.width, column.height);
 	}
 	
