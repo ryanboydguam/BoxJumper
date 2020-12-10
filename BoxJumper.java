@@ -148,7 +148,7 @@ public class BoxJumper implements ActionListener, MouseListener,KeyListener {
 		g.setColor(Color.orange.darker().darker().darker());
 		g.fillRect(column.x, column.y, column.width, column.height);
 		// draw img
-		g.drawImage(i,column.x,column.y,column.width,column.height,this);
+		g.drawImage(i,column.x,column.y,column.width,column.height,null);
 	}
 	
 	
