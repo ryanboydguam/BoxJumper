@@ -1,4 +1,4 @@
-package boxJumperProgram;
+package boxJumperProgram2;
 
 import java.awt.Graphics;
 
